@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Newsletter Registration</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Our own stylesheet, make sure to have a leading slash -->
+        <link rel="stylesheet" type="text/css" href="/style.css" media="screen" />
+    </head>
+    <body>
+        <h1>Newsletter Registration</h1>
+        <!-- Check here if the bound variable "registered" is not null and true, then print a success message -->
+        <% if (registered !== null && registered) { %>
+            <p><b>Thanks!</b> You've registered your mail address.</p>
+        <!-- If it's false then print an error message -->
+        <% } else if (registered != null && !registered) { %>
+            <p><b>Error!</b> Something went wrong when we tried to register you mail address.</p>
+        <% } %>
+
+        <p>Please type in your mail address and click on submit to receive interesting newsletters from us.</p>
+
+        <!-- This is an HTML formular sending a post request to the /register route -->
+        <form action="/register" method="post">
+                <label for="name_input">Your name</label>
+                <!-- Input field for name -->
+                <input type="text" id="name_input" name="name" placeholder="e.g. John Doe" required>
+                <label for="mail_input">Your mail address</label>
+                <!-- Input field for email -->
+                <input type="email" id="mail_input" name="email" placeholder="e.g. john.doe@example.org" required>
+                <!-- Submit button -->
+                <button type="submit">Submit</button>
+        </form>
+
+        <!-- Check here if we have any registered users -->
+        <% if (Object.keys(registeredUsers).length > 0) { %>
+            <h2>Change registration</h2>
+            <!-- This should never be done like this, it's just for the example -->
+            <ul>
+                <!-- For each registered user render a link to /user/:email -->
+                <% for (registeredUser in registeredUsers) { %>
+                    <li><a href="/user/<%= registeredUser %>"><%= registeredUsers[registeredUser].name %> &lt;<%= registeredUser %>&gt;</a></li>
+                <% } %>
+            </ul>
+        <% } %>     
+</body>
+</html>

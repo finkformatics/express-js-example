@@ -35,7 +35,8 @@ app.get('/', (req, res) => {
     }
 
     // Render the index template with two additional variables bound to the rendering engine
-    res.render('index', { registered: registered, registeredUsers: registeredUsers });
+    res.render('index_simple', { registered: registered, registeredUsers: registeredUsers });
+    // res.render('index', { registered: registered, registeredUsers: registeredUsers });
 });
 
 app.post('/register', (req, res) => {
@@ -83,7 +84,8 @@ app.get('/user/:email', (req, res) => {
     let registeredUser = registeredUsers[req.params.email];
 
     // Render the user template
-    res.render('user', { registeredUser: registeredUser });
+    res.render('user_simple', { registeredUser: registeredUser });
+    // res.render('user', { registeredUser: registeredUser });
 });
 
 // Same here

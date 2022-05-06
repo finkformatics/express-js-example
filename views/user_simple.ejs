@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Newsletter Registration</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Our own stylesheet, make sure to have a leading slash -->
+        <link rel="stylesheet" type="text/css" href="/style.css" media="screen" />
+    </head>
+    <body>
+        <h1>User</h1>
+        <p><b>Name:</b> <%= registeredUser.name %></p>
+        <p><b>E-Mail:</b> <%= registeredUser.email %></p>
+        <p>
+            <!-- Render a link to /unregister/:email -->
+            <a href="/unregister/<%= registeredUser.email %>">Unregister</a>
+        </p>
+    </body>
+</html>
