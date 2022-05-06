@@ -55,6 +55,7 @@ app.post('/register', (req, res) => {
         return;
     }
 
+    // Actually you would store them now inside a database or so
     registeredUsers[email] = new RegisteredUser(name, email);
 
     res.redirect('/?success=true')
@@ -64,7 +65,6 @@ app.post('/register', (req, res) => {
 app.get('/user/:email', (req, res) => {
     // You should put some protection here
     if (!registeredUsers[req.params.email]) {
-        console.log(registeredUsers);
         res.sendStatus(404);
         res.send('Not found');
 
