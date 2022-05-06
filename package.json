@@ -1,0 +1,10 @@
+{
+    "name": "newsletter_registration",
+    "version": "1.0.0",
+    "description": "A simple newsletter registration application",
+    "private": true,
+    "dependencies": {
+        "ejs": "^3.1.7",
+        "express": "^4.18.1"
+    }
+}

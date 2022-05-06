@@ -1,0 +1,39 @@
+<%- include('partials/header.ejs') %>
+
+<h5 class="card-title">Newsletter Registration</h5>
+<% if (registered !== null && registered) { %>
+    <div class="alert alert-success mt-3">
+        <b>Thanks!</b> You've registered your mail address.
+    </div>
+<% } else if (registered != null && !registered) { %>
+    <div class="alert alert-danger mt-3">
+        <b>Error!</b> Something went wrong when we tried to register you mail address.
+    </div>
+<% } %>
+<p class="card-text">Please type in your mail address and click on submit to receive interesting newsletters from us.</p>
+
+<form action="/register" method="post" class="mb-3">
+    <div class="mb-3">
+        <label for="name_input" class="form-label">Your name</label>
+        <input type="text" class="form-control" id="name_input" name="name" placeholder="e.g. John Doe" required>
+    </div>
+    <div class="mb-3">
+        <label for="mail_input" class="form-label">Your mail address</label>
+        <input type="email" class="form-control" id="mail_input" name="email" placeholder="e.g. john.doe@example.org" required>
+    </div>
+    <div class="d-grid">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+
+<% if (Object.keys(registeredUsers).length > 0) { %>
+    <h5 class="card-title">Change registration</h5>
+    <!-- This should never be done like this, it's just for the example -->
+    <div class="list-group">
+        <% for (registeredUser in registeredUsers) { %>
+            <a href="/user/<%= registeredUser %>" class="list-group-item list-group-item-action"><%= registeredUsers[registeredUser].name %> &lt;<%= registeredUser %>&gt;</a>
+        <% } %>
+    </div>
+<% } %>
+                  
+<%- include('partials/footer.ejs') %>
