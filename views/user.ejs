@@ -1,5 +1,6 @@
 <%- include('partials/header.ejs') %>
 
+<!-- Render the user data here -->
 <h5 class="card-title">User</h5>
 <div class="row mt-3">
     <div class="col"><b>Name:</b></div>
@@ -11,6 +12,7 @@
 </div>
 <div class="row mt-3">
     <div class="col">
+        <!-- Render a link to /unregister/:email -->
         <a href="/unregister/<%= registeredUser.email %>" class="btn btn-danger">Unregister</a>
     </div>
 </div>
